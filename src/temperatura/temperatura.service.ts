@@ -63,7 +63,6 @@ export class TemperaturaService {
     try {
       const temperatura: Temperatura = new Temperatura();
       temperatura.nombre = datos.nombre;
-      temperatura.ubicacion = datos.ubicacion;
       temperatura.temperatura = datos.temperatura;     
 
       const newTemperatura: Temperatura = qR
@@ -91,7 +90,6 @@ export class TemperaturaService {
     try {
       const temperatura: Temperatura = await this.getTemperaturaByIdOrFail(id, qR);
       temperatura.temperatura = datos.temperatura || temperatura.temperatura;
-      temperatura.ubicacion = datos.ubicacion || temperatura.ubicacion;
 
       const newTemperatura: Temperatura = qR
         ? await qR.manager.save(Temperatura, temperatura)

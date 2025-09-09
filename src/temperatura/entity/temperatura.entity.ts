@@ -12,9 +12,6 @@ export class Temperatura {
   @Column({ type: 'varchar', length: 6})
   temperatura: string;
 
-  @Column({ type: 'varchar', length: 100 })
-  ubicacion:string
-
   @OneToOne(()=>Lugar, lugar=> lugar.temp)
   lugar:Lugar;
 }

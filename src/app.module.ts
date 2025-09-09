@@ -10,6 +10,10 @@ import { AguaModule } from './agua/agua.module';
 import { TemperaturaModule } from './temperatura/temperatura.module';
 import { ErroresModule } from './errores/errores.module';
 import { LugarModule } from './lugar/lugar.module';
+import { Agua } from './agua/entity/agua.entity';
+import { Foco } from './foco/entity/foco.entity';
+import { Temperatura } from './temperatura/entity/temperatura.entity';
+import { Lugar } from './lugar/entity/lugar.entity';
 
 @Module({
   imports: [
@@ -25,8 +29,13 @@ import { LugarModule } from './lugar/lugar.module';
       password: process.env.DB_PASSWORD || 'root',
       database: process.env.DB_NAME || 'pollos',
       ssl: false,
-      entities: [],
-      synchronize: false,
+      entities: [
+        Agua,
+        Foco,
+        Temperatura,
+        Lugar
+      ],
+      synchronize: true,
       logging: false,
     }),
     FocoModule,
