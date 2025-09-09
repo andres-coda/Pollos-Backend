@@ -15,6 +15,7 @@ import { Agua } from './entity/agua.entity';
     forwardRef(() => GateWayModule),
   ],
   controllers: [AguaController],
-  providers: [AguaService]
+  providers: [AguaService],
+  exports: [AguaService]
 })
 export class AguaModule {}

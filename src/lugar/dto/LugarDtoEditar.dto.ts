@@ -1,4 +1,4 @@
-import { IsBoolean, IsOptional, IsString, Length } from "class-validator";
+import { IsBoolean, IsOptional, IsString, IsUUID, Length } from "class-validator";
 
 export class LugarDtoEditar {
 
@@ -9,5 +9,17 @@ export class LugarDtoEditar {
   @IsOptional()
   @IsString()
   @Length(1, 20, { message: 'la ubicacion no debe tener mas de 20 caracteres' })
-  ubicacion?: string;
+  nombre?: string;
+
+  @IsOptional()
+  @IsUUID()
+  foco?:string;
+
+  @IsOptional()
+  @IsUUID()
+  agua?:string;
+
+  @IsOptional()
+  @IsUUID()
+  temperatura?:string;
 }

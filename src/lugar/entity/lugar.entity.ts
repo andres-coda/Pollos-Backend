@@ -14,13 +14,13 @@ export class Lugar {
   @Column()
   estado:boolean;
 
-  @OneToMany(()=>Foco, foco=> foco.lugar)
+  @OneToMany(()=>Foco, foco=> foco.lugar, {cascade:true})
   foco:Foco[];
 
-  @OneToMany(()=>Agua, agua=> agua.lugar)
+  @OneToMany(()=>Agua, agua=> agua.lugar, {cascade:true})
   agua:Agua[];
 
-  @OneToOne(()=>Temperatura, temp=> temp.lugar)
+  @OneToOne(()=>Temperatura, temp=> temp.lugar, {cascade:true})
   @JoinColumn()
   temp:Temperatura;
 }

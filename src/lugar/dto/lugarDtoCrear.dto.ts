@@ -10,9 +10,4 @@ export class LugarDtoCrear {
   @IsOptional()
   @IsBoolean()
   estado?: boolean;
-
-  @IsNotEmpty()
-  @IsString()
-  @Length(1, 20, { message: 'la ubicacion no debe tener mas de 20 caracteres' })
-  ubicacion: string;
 }
