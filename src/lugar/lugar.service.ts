@@ -30,6 +30,7 @@ export class LugarService {
   async getLugar(): Promise<Lugar[]> {
     try {
       const criterio: FindManyOptions = {
+        relations:['foco','agua','temp'],
         order: {
           nombre: 'ASC'
         }

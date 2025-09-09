@@ -35,7 +35,7 @@ import { Lugar } from './lugar/entity/lugar.entity';
         Temperatura,
         Lugar
       ],
-      synchronize: true,
+      synchronize: false,
       logging: false,
     }),
     FocoModule,
