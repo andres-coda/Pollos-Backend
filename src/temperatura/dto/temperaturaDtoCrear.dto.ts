@@ -11,9 +11,4 @@ export class TemperaturaDtoCrear {
   @IsString()
   @Length(1, 5, { message: 'La temperatura no debe tener mas de 5 caracteres' })
   temperatura: string;
-
-  @IsNotEmpty()
-  @IsString()
-  @Length(1, 20, { message: 'la ubicacion no debe tener mas de 20 caracteres' })
-  ubicacion: string;
 }
