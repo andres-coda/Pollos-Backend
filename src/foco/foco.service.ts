@@ -20,6 +20,7 @@ export class FocoService {
   async getFoco(): Promise<Foco[]> {
     try {
       const criterio: FindManyOptions = {
+        relations:['lugar'],
         order: {
           nombre: 'ASC'
         }
@@ -47,6 +48,7 @@ export class FocoService {
   async getFocoById(id: string, qR?:QueryRunner): Promise<Foco | null> {
     try {
       const criterio: FindOneOptions = {
+        relations:['lugar'],
         where: {
           id: id,
         }
@@ -86,9 +88,7 @@ export class FocoService {
     }
   }
 
-  async updateFoco(id: string, datos: FocoDtoEditar, qR?:QueryRunner): Promise<Foco> {
-    console.log(datos);
-    
+  async updateFoco(id: string, datos: FocoDtoEditar, qR?:QueryRunner): Promise<Foco> {    
     try {
       const foco: Foco = await this.getFocoByIdOrFail(id, qR);
       foco.estado = datos.estado ===undefined ? foco.estado : datos.estado;
@@ -107,9 +107,6 @@ export class FocoService {
         
         this.gatGateway.actualizacionDato(payload);
       }
-
-      console.log(newFoco.estado)
-
       return newFoco;
     } catch (error) {
       throw this.erroresService.handleExceptions(error, `Error al intentar actualizar el dato con ${id} de foco`)
