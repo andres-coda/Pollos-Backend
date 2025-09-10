@@ -87,9 +87,11 @@ export class FocoService {
   }
 
   async updateFoco(id: string, datos: FocoDtoEditar, qR?:QueryRunner): Promise<Foco> {
+    console.log(datos);
+    
     try {
       const foco: Foco = await this.getFocoByIdOrFail(id, qR);
-      foco.estado = datos.estado || foco.estado;
+      foco.estado = datos.estado ===undefined ? foco.estado : datos.estado;
       foco.lugar = foco.lugar;
 
       const newFoco: Foco = qR
@@ -105,6 +107,8 @@ export class FocoService {
         
         this.gatGateway.actualizacionDato(payload);
       }
+
+      console.log(newFoco.estado)
 
       return newFoco;
     } catch (error) {
